@@ -1,4 +1,3 @@
-/* General Styles */
 * {
     padding: 0;
     margin: 0;
@@ -63,7 +62,6 @@ button:hover {
     background: #320093;
 }
 
-/* Blocks & Animation */
 #animation-area {
     margin-top: 20px;
 }
