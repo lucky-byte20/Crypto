@@ -1,0 +1,132 @@
+
+.counters-row, 
+.encryption-row, 
+.encrypted-counters-row, 
+.xor-row, 
+.plaintext-row, 
+.result-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.counter-box {
+    background: #ffffc3;
+    border: 2px solid #333;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+.encryption-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 270px;
+}
+
+.key-box {
+    background: #ffcc00;
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+}
+
+.key-animation {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.encryption-box {
+    background: #b3e6ff;
+    width: 120px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.encrypted-counter-box {
+    background: #c6e2ff;
+    border: 2px solid #333;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+.xor-operator {
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    width: 200px;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+.plaintext-box {
+    background: rgb(224, 214, 251);
+    border: 2px solid #333;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+.ciphertext-box {
+    background: rgb(218, 144, 238);
+    border: 2px solid #333;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    word-break: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.arrow-vertical {
+    font-size: 24px;
+    color: #333;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: moveArrowVertical 1s infinite alternate;
+}
+
+.arrow-horizontal {
+    font-size: 24px;
+    color: #333;
+    margin: 0 5px;
+    animation: moveArrowHorizontal 1s infinite alternate;
+}
+
+@keyframes moveArrowVertical {
+    from { transform: translateY(-5px); }
+    to { transform: translateY(5px); }
+}
+
+@keyframes moveArrowHorizontal {
+    from { transform: translateX(-5px); }
+    to { transform: translateX(5px); }
+}
