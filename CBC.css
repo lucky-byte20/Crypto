@@ -1,0 +1,159 @@
+.box {
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    word-break: break-word;
+}
+
+.plaintext-box {
+    background: rgb(224, 214, 251);
+}
+
+.encryption-box {
+    background: rgb(180, 233, 251);
+}
+
+.ciphertext-box {
+    background: rgb(218, 144, 238);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 5px 0;
+    display: block;
+    opacity: 0.8;
+    animation: moveArrow 1s infinite alternate;
+    color: #333;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.encryption-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.key-box{
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: #ffcc00;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+
+.key-animation {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.nonce {
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffdfba;
+    border: 2px solid #333;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.nonce-animation {
+    opacity: 1;
+    transform: translateX((10px));
+}
+
+@keyframes moveArrow {
+    from {
+        transform: translateY(-7px);
+    }
+    to {
+        transform: translateY(7px);
+    }
+}
+
+
+@keyframes moveBlock {
+    from {
+        transform: translateY(-15px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.xor-wrapper{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    width: 100%;
+}
+.xor-stack {
+    display: flex;
+    align-items: center;
+    gap: 2.5px;
+    position: relative;
+}
+
+.xor img.icon {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.block-container {
+    animation: moveBlock 0.5s ease-in-out forwards;
+    opacity: 0;
+}
+
+.ciphertext-box {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 5px 0;
+    display: block;
+    opacity: 0.8;
+    animation: moveArrow 1s infinite alternate;
+    color: #333;
+}
+
+.block-container::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 2px;
+    background: #999;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+
+.block-container:nth-child(n) {
+    animation-delay: calc(0.3s * var(--i));
+}
+
+.parallel-animation{
+    animation: moveBlock 1s ease-in-out forwards;
+}
+
