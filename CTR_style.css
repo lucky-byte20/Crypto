@@ -9,7 +9,6 @@
     word-break: break-word;
 }
 
-
 .plaintext-box {
     background: rgb(224, 214, 251);
 }
@@ -19,14 +18,14 @@
 }
 
 .ciphertext-box {
-   
     background: rgb(218, 144, 238);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.arrow {
+.arrow,
+.arrow7 {
     font-size: 24px;
     margin: 5px 0;
     display: block;
@@ -35,8 +34,8 @@
     color: #333;
 }
 
-.fade-in {
-    opacity: 1;
+.arrow7 {
+    margin-top: 30px;
 }
 
 .encryption-wrapper {
@@ -44,10 +43,10 @@
     align-items: center;
     gap: 10px;
     position: relative;
-    right :50px;
+    right: 50px;
 }
 
-.key-box{
+.key-box {
     width: 50px;
     padding: 5px;
     text-align: center;
@@ -59,7 +58,6 @@
     transition: opacity 1s ease-in-out;
 }
 
-
 .key-animation {
     opacity: 1;
     transform: translateX(10px);
@@ -67,15 +65,14 @@
 
 .plaintext-line {
     background-color: white;
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 10px 20px;
-  text-align: center;
-  display: inline-block;
-  margin: 10px auto;
-  font-weight: bold;
-  }
-  
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px auto;
+    font-weight: bold;
+}
 
 .nonce {
     width: 100px;
@@ -91,18 +88,13 @@
 
 .nonce-animation {
     opacity: 1;
-    transform: translateX((10px));
+    transform: translateX(10px);
 }
 
 @keyframes moveArrow {
-    from {
-        transform: translateY(-7px);
-    }
-    to {
-        transform: translateY(7px);
-    }
+    from { transform: translateY(-7px); }
+    to { transform: translateY(7px); }
 }
-
 
 @keyframes moveBlock {
     from {
@@ -115,51 +107,39 @@
     }
 }
 
-.xor-wrapper{
+.xor-wrapper {
     display: flex;
-    justify-content:left;
+    justify-content: left;
     align-items: center;
     width: 100%;
-    
 }
+
 .xor-stack {
     margin-top: 40px;
     display: flex;
-    align-items:center;
+    align-items: center;
     gap: 2.5px;
-    position:absolute;
-    left:5x;
+    position: absolute;
+    left: 5px;
 }
 
 .xor img.icon {
     height: 40px;
     width: auto;
     display: block;
-    position:fixed;
+    position: fixed;
+}
+
+.xor-with-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .block-container {
     animation: moveBlock 0.5s ease-in-out forwards;
     opacity: 0;
 }
-
-.ciphertext-box {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.arrow7 {
-    margin-top: 200px; 
-    font-size: 24px;
-    margin: 5px 0;
-    display: block;
-    opacity: 0.8;
-    animation: moveArrow 1s infinite alternate;
-    color: #333;
-
-  }
-  
 
 .block-container::after {
     content: '';
@@ -171,18 +151,10 @@
     opacity: 0.3;
 }
 
-.xor-with-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-  }
-  
-
 .block-container:nth-child(n) {
     animation-delay: calc(0.3s * var(--i));
 }
 
-.parallel-animation{
+.parallel-animation {
     animation: moveBlock 1s ease-in-out forwards;
 }
