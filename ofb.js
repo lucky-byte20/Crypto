@@ -2,7 +2,7 @@ function startOFBSimulation() {
     const plaintext = document.getElementById("plaintext").value;
     const key = document.getElementById("key").value;
     let ivInput = document.getElementById("iv");
-    let iv = ivInput && ivInput.value ? ivInput.value : generateRandomIV();    
+    let iv = ivInput && ivInput.value ? ivInput.value : generateRandomIV();
     const blocksContainer = document.getElementById("blocks-container");
     const finalCiphertextDisplay = document.getElementById("final-ciphertext");
     const plaintextDisplay = document.getElementById("plaintext-display");
@@ -28,42 +28,29 @@ function startOFBSimulation() {
     const encryptedBlocks = [];
 
     plaintextBlocks.forEach((block, index) => {
-        // Step 1: Encrypt current IV (previous output)
-        const encryptedOutput = CryptoJS.AES.encrypt(currentIV, keyBytes, {
-            mode: CryptoJS.mode.ECB,
+        const encrypted = CryptoJS.AES.encrypt(block, keyBytes, {
+            iv: currentIV,
+            mode: CryptoJS.mode.OFB,
             padding: CryptoJS.pad.NoPadding
-        }).ciphertext;
+        });
 
-        const outputWordArray = CryptoJS.lib.WordArray.create(encryptedOutput.words.slice(0), 16);
-        const plaintextWordArray = CryptoJS.enc.Utf8.parse(block);
-
-        // Step 2: XOR the output with plaintext block
-        const ciphertextBlock = plaintextWordArray.clone();
-        for (let i = 0; i < plaintextWordArray.words.length; i++) {
-            ciphertextBlock.words[i] ^= outputWordArray.words[i];
-        }
-
-        const base64Ciphertext = CryptoJS.enc.Base64.stringify(ciphertextBlock);
+        const base64Ciphertext = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
         encryptedBlocks.push(base64Ciphertext);
-        currentIV = outputWordArray;
+        currentIV = encrypted.ciphertext;
 
-        // === UI Rendering ===
         const blockContainer = document.createElement("div");
         blockContainer.classList.add("block-container");
 
-        // 1. Nonce / Output Box
         const nonceBox = document.createElement("div");
         nonceBox.classList.add("box", "nonce-box");
-        nonceBox.textContent = index === 0 ? "IV" : `Pervious Encryption`;
+        nonceBox.textContent = index === 0 ? "IV" : "Previous Encryption";
         blockContainer.appendChild(nonceBox);
 
-        // ↓
         const arrow1 = document.createElement("div");
         arrow1.classList.add("arrow");
         arrow1.textContent = "↓";
         blockContainer.appendChild(arrow1);
 
-        // 2. Encryption: Key → Output
         const encryptionWrapper = document.createElement("div");
         encryptionWrapper.classList.add("encryption-wrapper");
 
@@ -84,13 +71,11 @@ function startOFBSimulation() {
         encryptionWrapper.appendChild(outputBox);
         blockContainer.appendChild(encryptionWrapper);
 
-        // ↓
         const arrow2 = document.createElement("div");
         arrow2.classList.add("arrow");
         arrow2.textContent = "↓";
         blockContainer.appendChild(arrow2);
 
-        // 3. XOR Step
         const xorWrapper = document.createElement("div");
         xorWrapper.classList.add("xor-wrapper");
 
@@ -109,7 +94,7 @@ function startOFBSimulation() {
         xorop.classList.add("xor");
         const xorImage = document.createElement("img");
         xorImage.src = "xor.png";
-        xorImage.alt = "xor";
+        xorImage.alt = "XOR";
         xorImage.classList.add("icon");
         xorop.appendChild(xorImage);
 
@@ -119,22 +104,18 @@ function startOFBSimulation() {
         xorWrapper.appendChild(xorStack);
         blockContainer.appendChild(xorWrapper);
 
-        // ↓
         const arrow4 = document.createElement("div");
         arrow4.classList.add("arrow");
         arrow4.textContent = "↓";
         blockContainer.appendChild(arrow4);
 
-        // 4. Ciphertext
         const ciphertextBox = document.createElement("div");
         ciphertextBox.classList.add("box", "ciphertext-box");
         ciphertextBox.textContent = "Processing...";
         blockContainer.appendChild(ciphertextBox);
 
-        // Add block to container
         blocksContainer.appendChild(blockContainer);
-    
-        // === Animations ===
+
         setTimeout(() => {
             outputBox.textContent = "Encrypt";
         }, 1000 * index);
@@ -161,6 +142,4 @@ function startOFBSimulation() {
         }
         return result;
     }
-    
 }
-
