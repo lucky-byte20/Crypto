@@ -35,7 +35,7 @@ function startCFBSimulation() {
 
       const inputBox = document.createElement("div");
       inputBox.classList.add("box", "input-box");
-      inputBox.textContent = index === 0 ? "IV" : `CT${index}`;
+      inputBox.textContent = index === 0 ? "IV" : `PREVIOUS CT`;
 
       const arrow1 = createArrow();
 
