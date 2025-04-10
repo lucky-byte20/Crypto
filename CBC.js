@@ -37,7 +37,7 @@ function startCBCSimulation() {
         });
 
         const ciphertext = encrypted.ciphertext;
-        encryptedBlocks.push(ciphertext.toString(CryptoJS.enc.Base64));
+        encryptedBlocks.push(ciphertext.toString(CryptoJS.enc.hex));
         previousCipher = ciphertext;
 
         const blockContainer = document.createElement("div");
@@ -68,7 +68,7 @@ function startCBCSimulation() {
         const xorop = document.createElement("div");
         xorop.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "image/xor.png";
         xorImage.alt = "xor";
         xorImage.classList.add("icon");
         xorop.appendChild(xorImage);
@@ -124,10 +124,12 @@ function startCBCSimulation() {
 
         blockContainer.style.setProperty('--i', index);
 
-        setTimeout(() => { xorSource.classList.add("nonce-animation"); }, 3000);
-        setTimeout(() => { encryptionBox.textContent = "Encrypted"; }, 4000 * index);
-        setTimeout(() => { keyBox.classList.add("key-animation"); }, 1500 * index);
-        setTimeout(() => { ciphertextBox.textContent = encryptedBlocks[index]; }, 5000 * index);
+        const initialdelay=5000;
+
+        setTimeout(() => { xorSource.classList.add("nonce-animation"); }, initialdelay * index+0);
+        setTimeout(() => { encryptionBox.textContent = "Encrypted"; }, initialdelay * index+2500);
+        setTimeout(() => { keyBox.classList.add("key-animation"); }, initialdelay * index+1000);
+        setTimeout(() => { ciphertextBox.textContent = encryptedBlocks[index]; }, initialdelay * index+3500);
     });
 
     setTimeout(() => {
