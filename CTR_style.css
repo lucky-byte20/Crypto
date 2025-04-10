@@ -1,3 +1,54 @@
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #4300be;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #320093;
+}
+
+#animation-area {
+    margin-top: 20px;
+}
+
+#plaintext-display,
+#final-ciphertext {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #333;
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.blocks-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-top: 20px;
+}
+
+.block-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
 .box {
     width: 200px;
     padding: 15px;
@@ -24,18 +75,13 @@
     text-overflow: ellipsis;
 }
 
-.arrow,
-.arrow7 {
+.arrow{
     font-size: 24px;
     margin: 5px 0;
     display: block;
     opacity: 0.8;
     animation: moveArrow 1s infinite alternate;
     color: #333;
-}
-
-.arrow7 {
-    margin-top: 30px;
 }
 
 .encryption-wrapper {
@@ -72,6 +118,7 @@
     display: inline-block;
     margin: 10px auto;
     font-weight: bold;
+    width: 170px;
 }
 
 .nonce {
@@ -115,19 +162,17 @@
 }
 
 .xor-stack {
-    margin-top: 40px;
     display: flex;
     align-items: center;
     gap: 2.5px;
-    position: absolute;
-    left: 5px;
+    position: relative;
+    left: -71px;
 }
 
 .xor img.icon {
     height: 40px;
     width: auto;
     display: block;
-    position: fixed;
 }
 
 .xor-with-arrow {
