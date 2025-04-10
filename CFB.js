@@ -107,14 +107,24 @@ function startCFBSimulation() {
 
       const arrow5 = createArrow();
 
-      const encrypted = CryptoJS.AES.encrypt(block, keyBytes, {
-          iv: shiftRegister,
-          mode: CryptoJS.mode.CFB,
-          padding: CryptoJS.pad.NoPadding
-      });
+     
+    const encryptedRegister = CryptoJS.AES.encrypt(shiftRegister, keyBytes, {
+        iv: CryptoJS.enc.Hex.parse("00000000000000000000000000000000"),
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.NoPadding
+    }).ciphertext;
 
-      const ciphertext = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
-      shiftRegister = encrypted.ciphertext;
+    const encryptedChars = CryptoJS.enc.Base64.stringify(encryptedRegister).substring(0, sBits);
+
+    let result = "";
+    for (let i = 0; i < sBits; i++) {
+        result += String.fromCharCode(encryptedChars.charCodeAt(i) ^ block.charCodeAt(i));
+    }
+
+    const base64Result = btoa(result);
+    ciphertextBlocks.push(base64Result);
+    shiftRegister = CryptoJS.enc.Utf8.parse(result.padEnd(blockSize, '\0')); 
+
 
       const ciphertextBox = document.createElement("div");
       ciphertextBox.classList.add("box", "ciphertext-box");
@@ -139,9 +149,8 @@ function startCFBSimulation() {
       setTimeout(() => { blockContainer.style.opacity = "1"; }, index * 1000);
       setTimeout(() => { encryptBox.textContent = "Encrypted"; }, index * 5000 + 2000);
       setTimeout(() => { keyBox.classList.add("key-animation"); }, index * 1500);
-      setTimeout(() => { ciphertextBox.textContent = ciphertext; }, index * 5000 + 4000);
+      setTimeout(() => { ciphertextBox.textContent = base64Result; }, index * 5000 + 4000);
 
-      ciphertextBlocks.push(ciphertext);
   });
 
   setTimeout(() => {
