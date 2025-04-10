@@ -34,7 +34,7 @@ function startOFBSimulation() {
             padding: CryptoJS.pad.NoPadding
         });
 
-        const base64Ciphertext = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        const base64Ciphertext = encrypted.ciphertext.toString(CryptoJS.hex);
         encryptedBlocks.push(base64Ciphertext);
         currentIV = encrypted.ciphertext;
 
@@ -93,7 +93,7 @@ function startOFBSimulation() {
         const xorop = document.createElement("div");
         xorop.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "image/xor.png";
         xorImage.alt = "XOR";
         xorImage.classList.add("icon");
         xorop.appendChild(xorImage);
