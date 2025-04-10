@@ -68,7 +68,7 @@ function startCTRSimulation() {
             mode: CryptoJS.mode.ECB,
             padding: CryptoJS.pad.NoPadding
         });
-        const encryptedCounter = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        const encryptedCounter = encrypted.ciphertext.toString(CryptoJS.enc.Hex);
 
         const encryptedCounterBox = document.createElement("div");
         encryptedCounterBox.classList.add("box", "encrypted-counter-box");
@@ -87,7 +87,7 @@ function startCTRSimulation() {
         const xorop = document.createElement("div");
         xorop.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "image/xor.png";
         xorImage.alt = "xor";
         xorImage.classList.add("icon");
         xorop.appendChild(xorImage);
@@ -123,7 +123,7 @@ function startCTRSimulation() {
         arrow5.textContent = "↓";
 
         const arrow7 = document.createElement("div");
-        arrow7.classList.add("arrow7", "arrow-vertical7");
+        arrow7.classList.add("arrow", "arrow-vertical7");
         arrow7.textContent = "↓";
 
         const arrow3 = document.createElement("div");
@@ -148,16 +148,16 @@ function startCTRSimulation() {
 
         blockContainer.style.setProperty('--i', index);
 
-        setTimeout(() => { blockContainer.style.opacity = "1"; }, index * 1000);
-        setTimeout(() => { encryptionBox.textContent = "Encrypted"; keyBox.classList.add("key-animation"); }, index * 5000 + 2000);
-        setTimeout(() => { encryptedCounterBox.textContent = encryptedCounter; }, index * 5000 + 3500);
-        setTimeout(() => { ciphertextBox.textContent = ciphertext; }, index * 5000 + 5000);
-        setTimeout(() => { plaintextBox.classList.add("key-animation"); }, 1500 * index);
+        setTimeout(() => { encryptionBox.textContent = "Encrypted"; }, 3000);
+        setTimeout(() => {  keyBox.classList.add("key-animation");  }, 1000);
+        setTimeout(() => { encryptedCounterBox.textContent = encryptedCounter; }, 4000);
+        setTimeout(() => { ciphertextBox.textContent = ciphertext; }, 5000);
+        setTimeout(() => { plaintextBox.classList.add("key-animation"); }, 1500);
     });
 
     setTimeout(() => {
         finalCiphertextDisplay.textContent = `Final Ciphertext: ${ciphertextBlocks.join(" ")}`;
-    }, (plaintextBlocks.length - 1) * 5000 + 6000);
+    }, 7000);
 
     function generateIncrementedCounter(counterValue) {
         const numericString = counterValue.toString().padStart(16, '0');
@@ -170,12 +170,15 @@ function startCTRSimulation() {
         };
     }
 
-    function xorStrings(a, b) {
+    function xorStrings(hexA, strB) {
         let result = "";
-        for (let i = 0; i < a.length; i++) {
-            result += String.fromCharCode(a.charCodeAt(i) ^ (b.charCodeAt(i) || 0));
+        for (let i = 0; i < 16; i++) {
+            const byteA = parseInt(hexA.substr(i * 2, 2), 16); 
+            const byteB = strB.charCodeAt(i) || 0;             
+            const xor = byteA ^ byteB;
+            result += xor.toString(16).padStart(2, '0');        
         }
-        return btoa(result);
+        return result.toUpperCase();
     }
     
     
