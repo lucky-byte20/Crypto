@@ -95,7 +95,7 @@ function startCFBSimulation() {
         const xorOp = document.createElement("div");
         xorOp.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "image/xor.png";
         xorImage.alt = "xor";
         xorImage.classList.add("icon");
         xorOp.appendChild(xorImage);
@@ -106,6 +106,15 @@ function startCFBSimulation() {
         xorWrapper.appendChild(xorStack);
   
         const arrow5 = createArrow();
+
+        blockContainer.appendChild(inputBox);
+        
+        if(index>0){
+        const shiftregister =  document.createElement("div");
+        shiftregister.classList.add("box", "shift-register");
+        shiftregister.textContent = "← Shift Register";
+        blockContainer.appendChild(shiftregister);
+        }
   
        
       const encryptedRegister = CryptoJS.AES.encrypt(shiftRegister, keyBytes, {
@@ -124,6 +133,8 @@ function startCFBSimulation() {
       const hexResult = CryptoJS.enc.Hex.stringify(CryptoJS.enc.Utf8.parse(result));
       ciphertextBlocks.push(hexResult);
       shiftRegister = CryptoJS.enc.Utf8.parse(result.padEnd(blockSize, '\0')); 
+
+      
   
   
         const ciphertextBox = document.createElement("div");
@@ -131,7 +142,6 @@ function startCFBSimulation() {
         ciphertextBox.textContent = "Processing...";
   
         blockContainer.append(
-            inputBox,
             arrow1,
             encryptionRow,
             arrow2,
