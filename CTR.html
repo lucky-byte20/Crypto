@@ -33,6 +33,33 @@
             </li>
         </ul>
     </nav>
+
+    <div class="card mt-5">
+            <div class="card-body">
+                <h3 class="card-title text-primary">🔐 What is CTR?</h3>
+                <p class="card-text">CTR (Counter) mode is a block cipher mode that converts a block cipher like AES into a stream cipher by using a counter value combined with the key to encrypt data.</p>
+
+                <h3 class="text-primary">🔁 How CTR works?</h3>
+                <p>Instead of chaining, CTR mode generates a keystream by encrypting a counter value (usually nonce + block number) with the AES key, then XORs that with the plaintext to produce ciphertext.</p>
+
+                <h3 class="text-primary">🧪 Explain Simulation</h3>
+                <p>The simulation uses a fixed IV (nonce) and increments a counter for each block. The counter is encrypted with the AES key, and the result is XORed with the plaintext block.</p>
+
+                <h3 class="text-primary">🖥️ What this simulation shows?</h3>
+                <ul>
+                    <li>User inputs plaintext, key, and IV (used as nonce)</li>
+                    <li>Counter initialized (e.g., nonce || block number)</li>
+                    <li>Block 1: Encrypt(Nonce+0) → Output1 → XOR with Plaintext1 → Cipher1</li>
+                    <li>Block 2: Encrypt(Nonce+1) → Output2 → XOR with Plaintext2 → Cipher2</li>
+                    <li>Each block uses a new counter value (no chaining or feedback)</li>
+                    <li>Parallel processing is possible due to independent counters</li>
+                    <li>Highly efficient and secure if counters are never reused</li>
+                 </ul>
+            </div>
+        </div>
+
+
+    
     <div class="container mt-5 pt-5">
         <h2>CTR Encryption Simulator</h2>
         <div class="input-group">
