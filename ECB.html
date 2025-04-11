@@ -34,6 +34,32 @@
             </li>
         </ul>
     </nav>
+
+    <div class="card mt-5">
+            <div class="card-body">
+                <h3 class="card-title text-primary">🔐 What is ECB?</h3>
+                <p class="card-text">ECB (Electronic Codebook) is the simplest mode of AES encryption where each block of plaintext is encrypted independently using the same key.</p>
+
+                <h3 class="text-primary">🔁 How ECB works?</h3>
+                <p>In ECB mode, the plaintext is divided into fixed-size blocks, and each block is encrypted separately with the AES key, producing identical ciphertext blocks for identical plaintext blocks.</p>
+
+                <h3 class="text-primary">🧪 Explain Simulation</h3>
+                <p>This simulation shows how plaintext is encrypted block by block without chaining or feedback—each block is processed independently using the same AES key.</p>
+
+                <h3 class="text-primary">🖥️ What this simulation shows?</h3>
+                <ul>
+                    <li>User inputs plaintext and a 16-character key</li>
+                    <li>Plaintext is divided into 16-character blocks</li>
+                    <li>Each block is encrypted individually using the AES key</li>
+                    <li>No IV is used since there's no feedback</li>
+                    <li>Identical plaintext blocks produce identical ciphertext blocks</li>
+                    <li>The process is visually illustrated for each block</li>
+                    <li>Final ciphertext is formed by combining all encrypted blocks</li>
+                </ul>
+            </div>
+        </div>
+
+    
     <div class="container mt-5 pt-5">
         <h2>ECB Encryption Simulator</h2>
         <div class="input-group">
