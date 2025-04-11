@@ -31,6 +31,31 @@
             </li>
         </ul>
     </nav>
+
+     <div class="card mt-5">
+            <div class="card-body">
+                <h3 class="card-title text-primary">🔐 What is CFB?</h3>
+                <p class="card-text">CFB (Cipher Feedback) is a mode of AES that turns a block cipher into a stream cipher by feeding back part of the previous ciphertext block into the encryption process.</p>
+
+                <h3 class="text-primary">🔁 How CFB works?</h3>
+                <p>The IV is encrypted with the key, then XORed with the plaintext block to get ciphertext; this ciphertext becomes feedback for the next block.</p>
+
+                <h3 class="text-primary">🧪 Explain Simulation</h3>
+                <p>The simulation illustrates how the AES encryption of the IV or previous ciphertext is XORed with each plaintext block to produce ciphertext.</p>
+
+                <h3 class="text-primary">🖥️ What this simulation shows?</h3>
+                <ul>
+                    <li>User inputs plaintext, key, and IV</li>
+                    <li>IV is encrypted with AES → Output1</li>
+                    <li>Block 1: XOR(Plaintext1, Output1) → Cipher1</li>
+                    <li>Cipher1 used as feedback → Encrypt → Output2</li>
+                    <li>Block 2: XOR(Plaintext2, Output2) → Cipher2</li>
+                    <li>Repeats for all blocks</li>
+                    <li>Maintains chaining like CBC but uses feedback before encryption</li>
+                    <li>Suitable for stream-like encryption</li>
+                </ul>
+            </div>
+        </div>
     <div class="container mt-6 pt-6">
         <h2>CFB Encryption Simulator</h2>
         <div class="input-group">
