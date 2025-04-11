@@ -87,7 +87,7 @@ function startCTRSimulation() {
         const xorop = document.createElement("div");
         xorop.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "../assets/xor.png";
         xorImage.alt = "xor";
         xorImage.classList.add("icon");
         xorop.appendChild(xorImage);

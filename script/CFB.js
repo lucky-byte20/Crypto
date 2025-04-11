@@ -95,7 +95,7 @@ function startCFBSimulation() {
         const xorOp = document.createElement("div");
         xorOp.classList.add("xor");
         const xorImage = document.createElement("img");
-        xorImage.src = "xor.png";
+        xorImage.src = "../assets/xor.png";
         xorImage.alt = "xor";
         xorImage.classList.add("icon");
         xorOp.appendChild(xorImage);
