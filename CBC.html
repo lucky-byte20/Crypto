@@ -41,20 +41,6 @@
 
                 <h3 class="text-primary">🔁 How CBC works?</h3>
                 <p>The first plaintext block is XORed with the IV (Initialization Vector) and encrypted; subsequent blocks are XORed with the previous ciphertext block before encryption.</p>
-
-                <h3 class="text-primary">🧪 Explain Simulation</h3>
-                <p>The simulation takes the plaintext, splits it into blocks, and visually demonstrates how each block is XORed with feedback (IV or previous ciphertext) before being encrypted with AES.</p>
-
-                <h3 class="text-primary">🖥️ What this simulation shows?</h3>
-                <ul>
-                    <li>User inputs plaintext, key, and IV</li>
-                    <li>Plaintext is split into 16-character blocks</li>
-                    <li>Block 1: XOR(Plaintext1, IV) → Encrypt → Cipher1</li>
-                    <li>Block 2: XOR(Plaintext2, Cipher1) → Encrypt → Cipher2</li>
-                    <li>Repeats for all blocks using previous ciphertext as feedback</li>
-                    <li>Final ciphertext is the sequence of all encrypted blocks</li>
-                    <li>Identical plaintext blocks result in different ciphertext due to chaining</li>
-                </ul>
             </div>
         </div>
 
@@ -82,6 +68,24 @@
         </div>
                  
     </div>
+
+<div class="card mt-5">
+            <div class="card-body">
+    <h3 class="text-primary">🧪 Explain Simulation</h3>
+                <p>The simulation takes the plaintext, splits it into blocks, and visually demonstrates how each block is XORed with feedback (IV or previous ciphertext) before being encrypted with AES.</p>
+
+                <h3 class="text-primary">🖥️ What this simulation shows?</h3>
+                <ul>
+                    <li>User inputs plaintext, key, and IV</li>
+                    <li>Plaintext is split into 16-character blocks</li>
+                    <li>Block 1: XOR(Plaintext1, IV) → Encrypt → Cipher1</li>
+                    <li>Block 2: XOR(Plaintext2, Cipher1) → Encrypt → Cipher2</li>
+                    <li>Repeats for all blocks using previous ciphertext as feedback</li>
+                    <li>Final ciphertext is the sequence of all encrypted blocks</li>
+                    <li>Identical plaintext blocks result in different ciphertext due to chaining</li>
+                </ul>
+            </div>
+</div>
 
 </body>
 </html>
