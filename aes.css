@@ -1,12 +1,12 @@
 .aes-round-simulation {
   width:max-content;
-  margin-left: 425px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 50px;
   padding: 30px 20px;
   background-color: #d9c9ff;
+  overflow-wrap: break-word;
 }
 
 .matrix-stage {
