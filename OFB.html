@@ -33,6 +33,31 @@
             </li>
         </ul>
     </nav>
+
+    <div class="card mt-5">
+        <div class="card-body">
+            <h3 class="card-title text-primary">🔐 What is OFB?</h3>
+            <p class="card-text">OFB (Output Feedback) is a mode of operation for block ciphers that turns them into stream ciphers by using the output of encryption to generate the keystream.</p>
+
+            <h3 class="text-primary">🔁 How OFB works?</h3>
+            <p>Instead of encrypting plaintext directly, OFB encrypts an IV or the previous output, and XORs the result with the plaintext to generate ciphertext. The encrypted output (not the ciphertext) is used as input for the next step.</p>
+
+            <h3 class="text-primary">🧪 Explain Simulation</h3>
+            <p>The simulation demonstrates the OFB process by showing each step of how plaintext blocks are encrypted using a keystream derived from successive encrypted outputs of the IV.</p>
+
+            <h3 class="text-primary">🖥️ What this simulation shows?</h3>
+            <ul>
+                <li>Input IV and Key</li>
+                <li>Encrypt IV with Key → Output1</li>
+                <li>Output1 XOR Plaintext Block1 → Ciphertext1</li>
+                <li>Encrypt Output1 → Output2</li>
+                <li>Output2 XOR Plaintext Block2 → Ciphertext2</li>
+                <li>Repeat for each block using previous encrypted output</li>
+            </ul>
+        </div>
+    </div>
+
+    
     <div class="container mt-5 pt-5">
         <h2>OFB Encryption Simulator</h2>
         <div class="input-group">
